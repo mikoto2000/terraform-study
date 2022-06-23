@@ -26,3 +26,13 @@ terraform plan
 terraform apply
 ```
 
+# Azure Pipeline の環境変数
+
+1. `Pipelines` -> `Library`  -> `+ Variable group` ボタン押下
+2. 必要事項を記入して `Save` ボタン押下
+    - `Variable group name` : `terraform`
+    - `Variables`
+        - `AZ_VAL_AWS_ACCESS_KEY_ID`: 管理ユーザーの アクセスキー ID
+        - `AZ_VAL_AWS_SECRET_ACCESS_KEY`: 管理ユーザーのシークレットアクセスキー
+        - `AZ_VAL_TF_VAR_user_admin_gpg_key`: base64 エンコードした gpg 公開鍵
+
