@@ -26,6 +26,16 @@ terraform plan
 terraform apply
 ```
 
+# 初期パスワード確認
+
+```sh
+# base64 エンコード済み、かつ、暗号化済みのパスワードが記載された json を取得
+ENCRYPTED_PASSWORD=$(terraform output -json rookies_encrypted_initia_password | jq -r '.[0].encrypted_password')
+
+# encrypted password を base64 デコードして復号
+echo $ENCRYPTED_PASSWORD | base64 -d | gpg -r terraform-user-admin  2> /dev/null; echo
+```
+
 # Azure Pipeline の環境変数
 
 1. `Pipelines` -> `Library`  -> `+ Variable group` ボタン押下
